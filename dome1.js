@@ -8,7 +8,10 @@ $(document).ready(function () {
     db.allDocs({include_docs: true, descending: false}, function(err, doc) {
         if ( doc.rows && doc.rows.length > 0){
             for (var i=0;i<doc.rows.length;i++){
-                listdata.push(doc.rows[i].doc)
+                var item = doc.rows[i].doc;
+                if (!item.deleted){
+                    listdata.push(item)
+                }
             }
         }
     });
@@ -66,13 +69,8 @@ $(document).ready(function () {
             //删除
             removeList(index) {
                 var item = this.list.splice(index, 1);
-                db.remove(item[0]);
-            },
-            showList(){
-                db.allDocs({include_docs: true, descending: false}, function(err, doc) {
-                    console.log(this.list)
-                    console.log(doc.rows)
-                });
+                item[0].deleted = true
+                db.put(item[0]);
             }
         }
     })
