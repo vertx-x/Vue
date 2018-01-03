@@ -61,10 +61,12 @@ $(document).ready(function () {
             changeState(index) {
                 let curState = this.list[index].finished;
                 this.list[index].finished = !curState;
+                db.put(this.list[index]);
             },
             //删除
             removeList(index) {
-                this.list.splice(index, 1);
+                var item = this.list.splice(index, 1);
+                db.remove(item[0]);
             },
             showList(){
                 db.allDocs({include_docs: true, descending: false}, function(err, doc) {
