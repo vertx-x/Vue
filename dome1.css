@@ -1,0 +1,50 @@
+div {
+	width: 500px;
+	margin: 30px auto;
+}
+
+.edit {
+	display: block;
+	line-height: 35px;
+	box-sizing: border-box;
+	padding-left: 20px;
+	border-radius: 4px;
+	border: 1px solid #ccc;
+	box-shadow: 0 0 5px #ccc;
+}
+
+.task li {
+	position: relative;
+	padding: 10px 0;
+	border-bottom: 1px solid #efefef;
+	list-style: none;
+}
+
+.task li:last-child {
+	border-bottom: 0;
+}
+
+.finish {
+	text-decoration: line-through;
+	color: #ccc;
+}
+
+.del {
+	background: red;
+	text-decoration: none;
+	position: absolute;
+	right: 0;
+	font-size: 12px;
+	border: 0;
+	outline: 0;
+	padding: 2px 5px;
+	border-radius: 5px;
+	color: #fff;
+}
+
+.empty {
+	font-size: 13px;
+	color: #000;
+	text-align: center;
+	padding: 10px 0;
+}
